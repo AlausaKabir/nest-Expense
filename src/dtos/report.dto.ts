@@ -34,4 +34,12 @@ export class ReportResponseDto {
     @Exclude()
     updated_at: Date;
     type: ReportType
+
+    @Expose({ name: 'createdAt' })
+    transformCreatedAt() {
+        return this.created_at
+    }
+    constructor(partial: Partial<ReportResponseDto>) {
+        Object.assign(this, partial)
+    }
 }
